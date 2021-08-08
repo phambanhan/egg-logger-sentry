@@ -8,12 +8,6 @@ module.exports = class AppBootHook {
     this.app = app;
   }
 
-  configDidLoad() {
-    const { app } = this;
-    app.config.coreMiddleware.unshift('sentryPushScope');
-    app.config.coreMiddleware.push('sentryPopScope');
-  }
-
   didLoad() {
     const { app } = this;
 

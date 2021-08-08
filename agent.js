@@ -8,6 +8,13 @@ module.exports = class AppBootHook {
     this.app = app;
   }
 
+  configDidLoad() {
+    const { app } = this;
+    if (app.config.loggerSentry && app.config.loggerSentry.performanceMonitor === true) {
+      app.config.coreMiddleware.push('sentryTracing');
+    }
+  }
+
   didLoad() {
     const { app } = this;
 
